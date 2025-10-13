@@ -21,38 +21,51 @@ When deploying this application, ensure you:
    php artisan key:generate
    ```
 
-2. **Change default demo user credentials:**
+2. **Set secure root admin credentials:**
    
-   The seeder creates demo users with default passwords:
-   - `admin@example.com` / `password` (Admin)
-   - `client@example.com` / `password` (Client)
-   - `jane@example.com` / `password` (Client)
+   Before running the seeder, you MUST set these in your `.env` file:
+   ```env
+   ROOT_ADMIN_NAME="Your Name"
+   ROOT_ADMIN_EMAIL=your-secure-email@yourdomain.com
+   ROOT_ADMIN_PASSWORD=your-strong-password-here
+   ```
 
-   **⚠️ IMPORTANT**: Either:
-   - Delete these users after creating your own admin account, OR
-   - Change their passwords immediately in production
-   - Don't run the seeder on production environments
+   **✅ IMPORTANT**: 
+   - Use a strong, unique password (minimum 8 characters)
+   - Use your real email address
+   - Never commit these credentials to version control
+   - The seeder will fail if these are not set
 
-3. **Update email configuration:**
+3. **Disable demo users in production:**
+   
+   Demo client users are disabled by default (`SEED_DEMO_USERS=false`)
+   
+   **⚠️ NEVER** enable demo users in production:
+   ```env
+   # In .env file (production)
+   SEED_DEMO_USERS=false  # Keep this false!
+   ```
+
+4. **Update email configuration:**
    - Use your own SMTP credentials
    - Never use default/example email addresses in production
 
-4. **Database security:**
+5. **Database security:**
    - Use strong, unique database passwords
    - Never use `root` with no password in production
    - Restrict database access to localhost only
 
-5. **Set proper file permissions:**
+6. **Set proper file permissions:**
    ```bash
    chmod -R 775 storage bootstrap/cache
    chown -R www-data:www-data storage bootstrap/cache
    ```
 
-6. **Configure proper CORS and CSRF protection:**
+7. **Configure proper CORS and CSRF protection:**
    - Review and update CORS settings in production
    - Ensure CSRF tokens are properly validated
 
-7. **Update APP_ENV to production:**
+8. **Update APP_ENV to production:**
    ```
    APP_ENV=production
    APP_DEBUG=false
@@ -66,6 +79,14 @@ Required secure environment variables:
 APP_ENV=production
 APP_DEBUG=false
 APP_KEY=base64:YOUR_GENERATED_KEY_HERE
+
+# Root Admin (REQUIRED for seeding)
+ROOT_ADMIN_NAME="Your Name"
+ROOT_ADMIN_EMAIL=admin@yourdomain.com
+ROOT_ADMIN_PASSWORD=your_strong_unique_password
+
+# Demo Users (MUST be false in production)
+SEED_DEMO_USERS=false
 
 DB_PASSWORD=your_strong_unique_password
 

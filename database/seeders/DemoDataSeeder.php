@@ -23,29 +23,54 @@ class DemoDataSeeder extends Seeder
         $adminRole = Role::create(['name' => 'admin']);
         $clientRole = Role::create(['name' => 'client']);
 
-        // Create Root Admin User
+        // Create Root Admin User from environment variables
+        // These should be set in your .env file before seeding
+        $rootName = env('ROOT_ADMIN_NAME', 'Root Administrator');
+        $rootEmail = env('ROOT_ADMIN_EMAIL');
+        $rootPassword = env('ROOT_ADMIN_PASSWORD');
+
+        // Validate that root admin credentials are provided
+        if (empty($rootEmail) || empty($rootPassword)) {
+            throw new \Exception(
+                'Root admin credentials not found! Please set ROOT_ADMIN_EMAIL and ROOT_ADMIN_PASSWORD in your .env file before seeding.'
+            );
+        }
+
+        // Ensure password meets minimum requirements
+        if (strlen($rootPassword) < 8) {
+            throw new \Exception(
+                'ROOT_ADMIN_PASSWORD must be at least 8 characters long.'
+            );
+        }
+
         $admin = User::create([
-            'name' => 'Root Administrator',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
+            'name' => $rootName,
+            'email' => $rootEmail,
+            'password' => Hash::make($rootPassword),
             'is_root' => true, // Mark as root admin
         ]);
         $admin->roles()->attach($adminRole);
 
-        // Create Client Users
-        $client = User::create([
-            'name' => 'John Doe',
-            'email' => 'client@example.com',
-            'password' => Hash::make('password'),
-        ]);
-        $client->roles()->attach($clientRole);
+        $this->command->info("✅ Root admin created successfully: {$rootEmail}");
 
-        $client2 = User::create([
-            'name' => 'Jane Smith',
-            'email' => 'jane@example.com',
-            'password' => Hash::make('password'),
-        ]);
-        $client2->roles()->attach($clientRole);
+        // Create Demo Client Users (only if SEED_DEMO_USERS is true)
+        if (env('SEED_DEMO_USERS', false)) {
+            $client = User::create([
+                'name' => 'John Doe',
+                'email' => 'client@example.com',
+                'password' => Hash::make('password'),
+            ]);
+            $client->roles()->attach($clientRole);
+
+            $client2 = User::create([
+                'name' => 'Jane Smith',
+                'email' => 'jane@example.com',
+                'password' => Hash::make('password'),
+            ]);
+            $client2->roles()->attach($clientRole);
+
+            $this->command->info("✅ Demo client users created (for testing only)");
+        }
 
         // Create Discounts
         $discount1 = Discount::create([

@@ -63,11 +63,19 @@ A comprehensive web application for managing tours, destinations, and travel boo
    - Set database credentials
    - Configure mail settings
    - Update APP_URL
+   - **IMPORTANT:** Set root admin credentials (required):
+     ```env
+     ROOT_ADMIN_NAME="Your Name"
+     ROOT_ADMIN_EMAIL=your-email@example.com
+     ROOT_ADMIN_PASSWORD=your-secure-password-here
+     ```
 
 5. **Run migrations and seeders:**
    ```bash
    php artisan migrate --seed
    ```
+   
+   ⚠️ **Important:** The seeder will fail if `ROOT_ADMIN_EMAIL` and `ROOT_ADMIN_PASSWORD` are not set in your `.env` file!
 
 6. **Build assets:**
    ```bash
@@ -83,12 +91,17 @@ A comprehensive web application for managing tours, destinations, and travel boo
    - Frontend: http://localhost:8000
    - Admin Panel: http://localhost:8000/admin/dashboard
 
-### 🔐 Default Credentials (Development Only)
+### 🔐 Admin Credentials
 
-**⚠️ WARNING: Change these immediately in production!**
+**Root Admin:** Use the credentials you set in your `.env` file:
+- Email: Value of `ROOT_ADMIN_EMAIL`
+- Password: Value of `ROOT_ADMIN_PASSWORD`
 
-- **Admin:** admin@example.com / password
-- **Client:** client@example.com / password
+**Demo Users:** (Only created if `SEED_DEMO_USERS=true`)
+- **Client 1:** client@example.com / password
+- **Client 2:** jane@example.com / password
+
+⚠️ **Note:** Demo users are disabled by default and should NOT be enabled in production!
 
 ## 🔒 Security
 
