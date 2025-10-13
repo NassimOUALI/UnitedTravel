@@ -22,7 +22,15 @@ class User extends Authenticatable
         'email',
         'password',
         'profile_photo',
-        'is_root',
+    ];
+    
+    /**
+     * The attributes that should be guarded from mass assignment.
+     *
+     * @var list<string>
+     */
+    protected $guarded = [
+        'is_root', // Prevent privilege escalation
     ];
 
     /**

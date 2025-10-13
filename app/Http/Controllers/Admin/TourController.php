@@ -83,7 +83,9 @@ class TourController extends Controller
             for ($i = 0; $i < $attachmentCount; $i++) {
                 $file = $attachments[$i];
                 $originalName = $file->getClientOriginalName();
-                $filename = time() . '_' . $i . '_' . $originalName;
+                // Sanitize filename to prevent path traversal attacks
+                $safeFilename = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', basename($originalName));
+                $filename = time() . '_' . $i . '_' . $safeFilename;
                 $path = $file->storeAs('tour-attachments', $filename, 'public');
                 
                 // Determine file type
