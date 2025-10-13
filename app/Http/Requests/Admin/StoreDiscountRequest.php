@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Requests\Admin;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreDiscountRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'name' => ['required', 'string', 'max:100', 'unique:discounts,name'],
+            'percentage' => ['required', 'numeric', 'min:0', 'max:100'],
+            'valid_until' => ['required', 'date', 'after:today'],
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     */
+    public function attributes(): array
+    {
+        return [
+            'name' => 'discount name',
+            'percentage' => 'discount percentage',
+            'valid_until' => 'valid until date',
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     */
+    public function messages(): array
+    {
+        return [
+            'percentage.min' => 'Discount percentage must be at least 0%',
+            'percentage.max' => 'Discount percentage cannot exceed 100%',
+            'valid_until.after' => 'Valid until date must be a future date',
+        ];
+    }
+}

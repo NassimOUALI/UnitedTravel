@@ -1,0 +1,43 @@
+/* Logo Sizing for @2x Retina Images */
+/* This ensures logos display at correct size even when using high-res @2x versions */
+
+/* Main Navigation Logo */
+.navbar-brand img {
+    max-height: 45px;
+    width: auto;
+    height: auto;
+}
+
+/* Mobile Menu Logo */
+.offcanvas-navbar .offcanvas-header img {
+    max-height: 40px;
+    width: auto;
+    height: auto;
+}
+
+/* Footer Logo */
+.footer-logo img {
+    max-height: 50px;
+    width: auto;
+    height: auto;
+}
+
+/* TripAdvisor Award Logo */
+.vertical-award .award-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Admin Panel Logo */
+.admin-brand img {
+    max-height: 45px;
+    width: auto;
+    height: auto;
+}
+
+/* Ensure all images maintain aspect ratio */
+img[srcset] {
+    max-width: 100%;
+    height: auto;
+}
+
