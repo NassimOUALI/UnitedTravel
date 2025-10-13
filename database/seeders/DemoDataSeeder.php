@@ -6,9 +6,6 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Destination;
-use App\Models\Tour;
-use App\Models\Discount;
-use App\Models\Announcement;
 use App\Models\Image;
 use Illuminate\Support\Facades\Hash;
 
@@ -72,24 +69,8 @@ class DemoDataSeeder extends Seeder
             $this->command->info("✅ Demo client users created (for testing only)");
         }
 
-        // Create Discounts
-        $discount1 = Discount::create([
-            'name' => 'Early Bird Special',
-            'percentage' => 15,
-            'valid_until' => now()->addMonths(3),
-        ]);
-
-        $discount2 = Discount::create([
-            'name' => 'Summer Sale',
-            'percentage' => 20,
-            'valid_until' => now()->addMonths(2),
-        ]);
-
-        $discount3 = Discount::create([
-            'name' => 'Last Minute Deal',
-            'percentage' => 25,
-            'valid_until' => now()->addMonth(),
-        ]);
+        // Clean up any existing tour-related files
+        $this->cleanupTourFiles();
 
         // Destination images from assets/img/destinations/
         $destinationImages = [
@@ -203,195 +184,68 @@ class DemoDataSeeder extends Seeder
             $createdDestinations[] = $destination;
         }
 
-        // Tour images from assets/img/tours/
-        $tourImages = [
-            'assets/img/tours/t1.jpg',
-            'assets/img/tours/t2.jpg',
-            'assets/img/tours/t3.jpg',
-            'assets/img/tours/t4.jpg',
-            'assets/img/tours/t5.jpg',
-            'assets/img/tours/t6.jpg',
-            'assets/img/tours/t7.jpg',
-            'assets/img/tours/t8.jpg',
-            'assets/img/tours/t9.jpg',
-            'assets/img/tours/t10.jpg',
-            'assets/img/tours/t11.jpg',
-            'assets/img/tours/t12.jpg',
-        ];
+        $destinationCount = count($createdDestinations);
+        $this->command->info("✅ {$destinationCount} destinations created successfully");
+    }
 
-        // Create Tours with images
-        $tours = [
-            [
-                'title' => 'Paris City Explorer',
-                'description' => 'Discover the magic of Paris with visits to the Eiffel Tower, Louvre Museum, Notre-Dame Cathedral, and a romantic Seine River cruise. Includes guided tours, skip-the-line access, and traditional French dinner.',
-                'duration' => '5 Days 4 Nights',
-                'price' => 1299.00,
-                'is_price_defined' => true,
-                'discount_id' => $discount1->id,
-                'image_path' => $tourImages[0],
-                'destinations' => [0], // Paris
-            ],
-            [
-                'title' => 'Tokyo Food Adventure',
-                'description' => 'Embark on a culinary journey through Tokyo\'s best food districts. Taste authentic sushi, ramen, yakitori, and street food while exploring vibrant neighborhoods like Tsukiji, Shibuya, and Harajuku.',
-                'duration' => '7 Days 6 Nights',
-                'price' => 1899.00,
-                'is_price_defined' => true,
-                'discount_id' => $discount2->id,
-                'image_path' => $tourImages[1],
-                'destinations' => [1], // Tokyo
-            ],
-            [
-                'title' => 'Bali Wellness Retreat',
-                'description' => 'Rejuvenate your mind, body, and soul in Bali with daily yoga sessions, spa treatments, meditation in rice terraces, healthy organic meals, and visits to sacred temples and pristine beaches.',
-                'duration' => '10 Days 9 Nights',
-                'price' => 2199.00,
-                'is_price_defined' => true,
-                'discount_id' => null,
-                'image_path' => $tourImages[2],
-                'destinations' => [2], // Bali
-            ],
-            [
-                'title' => 'New York City Highlights',
-                'description' => 'Experience the best of NYC with visits to Empire State Building, Statue of Liberty, Central Park, Broadway show, 9/11 Memorial, Brooklyn Bridge, and shopping on Fifth Avenue.',
-                'duration' => '4 Days 3 Nights',
-                'price' => 999.00,
-                'is_price_defined' => true,
-                'discount_id' => $discount3->id,
-                'image_path' => $tourImages[3],
-                'destinations' => [3], // New York
-            ],
-            [
-                'title' => 'Rome Ancient Wonders',
-                'description' => 'Step back in time exploring the Colosseum, Roman Forum, Pantheon, Vatican Museums, Sistine Chapel, and St. Peter\'s Basilica. Includes guided tours by expert historians.',
-                'duration' => '6 Days 5 Nights',
-                'price' => 1599.00,
-                'is_price_defined' => true,
-                'discount_id' => null,
-                'image_path' => $tourImages[4],
-                'destinations' => [4], // Rome
-            ],
-            [
-                'title' => 'Dubai Luxury Experience',
-                'description' => 'Live the high life with stays in 5-star hotels, desert safari with BBQ dinner, Burj Khalifa observation deck, Dubai Mall shopping, Palm Jumeirah, and yacht cruise.',
-                'duration' => '5 Days 4 Nights',
-                'price' => 2499.00,
-                'is_price_defined' => true,
-                'discount_id' => $discount1->id,
-                'image_path' => $tourImages[5],
-                'destinations' => [5], // Dubai
-            ],
-            [
-                'title' => 'Santorini Romantic Escape',
-                'description' => 'Perfect honeymoon package with sunset views in Oia, wine tasting tour, private catamaran cruise, couples spa treatments, and candlelit dinners overlooking the caldera.',
-                'duration' => '7 Days 6 Nights',
-                'price' => 2799.00,
-                'is_price_defined' => true,
-                'discount_id' => null,
-                'image_path' => $tourImages[6],
-                'destinations' => [6], // Santorini
-            ],
-            [
-                'title' => 'Maldives Island Paradise',
-                'description' => 'Ultimate tropical getaway with overwater villa accommodation, snorkeling with manta rays, sunset fishing, spa treatments, and all-inclusive dining at luxury resort.',
-                'duration' => '8 Days 7 Nights',
-                'price' => 3999.00,
-                'is_price_defined' => true,
-                'discount_id' => $discount2->id,
-                'image_path' => $tourImages[7],
-                'destinations' => [7], // Maldives
-            ],
-            [
-                'title' => 'Barcelona Art & Culture',
-                'description' => 'Explore Gaudí\'s masterpieces including Sagrada Familia and Park Güell, Gothic Quarter walking tour, Picasso Museum, flamenco show, tapas tasting, and beach time.',
-                'duration' => '5 Days 4 Nights',
-                'price' => 1399.00,
-                'is_price_defined' => true,
-                'discount_id' => null,
-                'image_path' => $tourImages[8],
-                'destinations' => [8], // Barcelona
-            ],
-            [
-                'title' => 'London Royal Heritage',
-                'description' => 'Discover British royalty with tours of Buckingham Palace, Tower of London with Crown Jewels, Westminster Abbey, Windsor Castle, and afternoon tea at a historic hotel.',
-                'duration' => '6 Days 5 Nights',
-                'price' => 1799.00,
-                'is_price_defined' => true,
-                'discount_id' => $discount3->id,
-                'image_path' => $tourImages[9],
-                'destinations' => [9], // London
-            ],
-            [
-                'title' => 'Iceland Northern Lights',
-                'description' => 'Chase the aurora borealis with expert guides, visit Blue Lagoon geothermal spa, explore Golden Circle (Gullfoss, Geysir, Þingvellir), and ice cave adventure.',
-                'duration' => '7 Days 6 Nights',
-                'price' => 2599.00,
-                'is_price_defined' => true,
-                'discount_id' => null,
-                'image_path' => $tourImages[10],
-                'destinations' => [11], // Iceland
-            ],
-            [
-                'title' => 'Morocco Desert Adventure',
-                'description' => 'Experience the magic of Morocco with Marrakech souks, Atlas Mountains trek, Sahara Desert camel ride, overnight in Berber camp, and explore blue city of Chefchaouen.',
-                'duration' => '9 Days 8 Nights',
-                'price' => 1699.00,
-                'is_price_defined' => true,
-                'discount_id' => $discount1->id,
-                'image_path' => $tourImages[11],
-                'destinations' => [13], // Morocco
-            ],
-        ];
+    /**
+     * Clean up tour-related files from storage
+     */
+    private function cleanupTourFiles(): void
+    {
+        $this->command->info("🧹 Cleaning up tour-related files...");
+        
+        // Delete tour images from public storage
+        $tourImagesPath = public_path('storage/tours');
+        if (is_dir($tourImagesPath)) {
+            $this->deleteDirectory($tourImagesPath);
+            $this->command->info("  ✅ Deleted tour images");
+        }
 
-        foreach ($tours as $tourData) {
-            $destinationIds = $tourData['destinations'];
-            unset($tourData['destinations']);
-            
-            // Store image path separately
-            $imagePath = $tourData['image_path'];
-            unset($tourData['image_path']);
-            
-            $tour = Tour::create($tourData);
-            
-            // Create associated image record
-            $tour->images()->create([
-                'path' => $imagePath,
-                'alt_text' => $tour->title,
-                'order' => 0,
-                'is_primary' => true,
-            ]);
-            
-            // Attach destinations
-            foreach ($destinationIds as $destIndex) {
-                if (isset($createdDestinations[$destIndex])) {
-                    $tour->destinations()->attach($createdDestinations[$destIndex]->id);
-                }
+        // Delete tour attachments from public storage
+        $tourAttachmentsPath = public_path('storage/tour-attachments');
+        if (is_dir($tourAttachmentsPath)) {
+            $this->deleteDirectory($tourAttachmentsPath);
+            $this->command->info("  ✅ Deleted tour attachments");
+        }
+
+        // Delete from storage/app/public as well
+        $storageTourImagesPath = storage_path('app/public/tours');
+        if (is_dir($storageTourImagesPath)) {
+            $this->deleteDirectory($storageTourImagesPath);
+        }
+
+        $storageTourAttachmentsPath = storage_path('app/public/tour-attachments');
+        if (is_dir($storageTourAttachmentsPath)) {
+            $this->deleteDirectory($storageTourAttachmentsPath);
+        }
+
+        $this->command->info("✅ Tour-related files cleaned up");
+    }
+
+    /**
+     * Recursively delete a directory
+     */
+    private function deleteDirectory(string $dir): bool
+    {
+        if (!file_exists($dir)) {
+            return true;
+        }
+
+        if (!is_dir($dir)) {
+            return unlink($dir);
+        }
+
+        foreach (scandir($dir) as $item) {
+            if ($item == '.' || $item == '..') {
+                continue;
+            }
+
+            if (!$this->deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+                return false;
             }
         }
 
-        // Create Announcements
-        Announcement::create([
-            'title' => 'Summer Sale Now Live!',
-            'content' => 'Get up to 25% off on selected tour packages. Book before the end of the month to secure the best deals for your summer vacation.',
-            'visible' => true,
-        ]);
-
-        Announcement::create([
-            'title' => 'New Destination: Iceland',
-            'content' => 'We are excited to announce Iceland tours! Experience the Northern Lights, stunning waterfalls, and geothermal hot springs.',
-            'visible' => true,
-        ]);
-
-        Announcement::create([
-            'title' => 'Travel Safety Guidelines',
-            'content' => 'Your safety is our priority. All our tours follow strict health and safety protocols. Check our updated travel guidelines before booking.',
-            'visible' => true,
-        ]);
-
-        Announcement::create([
-            'title' => 'Early Bird Discounts Available',
-            'content' => 'Book your 2025 tours now and save 15%! Limited time offer for advance bookings. Plan ahead and travel for less.',
-            'visible' => false,
-        ]);
+        return rmdir($dir);
     }
 }
