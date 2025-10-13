@@ -183,9 +183,10 @@ php test-email.php
 ## 📝 Documentation
 
 For detailed documentation, see:
-- [SETUP_INSTRUCTIONS.md](SETUP_INSTRUCTIONS.md) - Detailed setup guide
+- [SETUP_INSTRUCTIONS.md](docs/SETUP_INSTRUCTIONS.md) - Detailed setup guide
 - [SECURITY.md](SECURITY.md) - Security guidelines
-- [DEPLOYMENT_AND_UPDATE_GUIDE.md](DEPLOYMENT_AND_UPDATE_GUIDE.md) - Deployment guide
+- [DEPLOYMENT_AND_UPDATE_GUIDE.md](docs/DEPLOYMENT_AND_UPDATE_GUIDE.md) - Deployment guide
+- [docs/](docs/) - Full documentation directory with implementation guides and testing instructions
 
 ## 🤝 Contributing
 
