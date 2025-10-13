@@ -1,61 +1,212 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🌍 United Travels - Tour & Travel Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive web application for managing tours, destinations, and travel bookings built with Laravel 11 and modern web technologies.
 
-## About Laravel
+![Laravel](https://img.shields.io/badge/Laravel-11.x-red.svg)
+![PHP](https://img.shields.io/badge/PHP-8.2+-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### For Users
+- 🗺️ **Browse Tours & Destinations** - Explore amazing travel packages and destinations
+- ❤️ **Wishlist System** - Save favorite tours for later
+- 💱 **Multi-Currency Support** - View prices in USD, EUR, GBP, and more
+- 🌐 **Multi-Language Support** - Available in English, French, Spanish, German, Italian, and Dutch
+- 📱 **Responsive Design** - Perfect experience on all devices
+- 📧 **Contact System** - Easy communication with the travel agency
+- 👤 **User Dashboard** - Manage profile and view wishlisted tours
+- 🔍 **Advanced Search & Filters** - Find the perfect tour quickly
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### For Administrators
+- 📊 **Admin Dashboard** - Comprehensive overview of the system
+- 🎯 **Tour Management** - Create, edit, and manage tour packages
+- 🗺️ **Destination Management** - Manage travel destinations
+- 👥 **User Management** - Manage customers and administrators
+- 💰 **Discount System** - Create and manage promotional discounts
+- 📢 **Announcements** - Broadcast important messages to users
+- 📩 **Contact Messages** - View and respond to customer inquiries
+- 📸 **Image Gallery** - Multiple images per tour/destination
+- 📎 **Attachments** - Upload tour documents and brochures
 
-## Learning Laravel
+## 🚀 Quick Start
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prerequisites
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- PHP 8.2 or higher
+- Composer
+- MySQL 5.7+ or MariaDB
+- Node.js & NPM
+- Apache/Nginx web server
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Installation
 
-## Laravel Sponsors
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/NassimOUALI/UnitedTravel.git
+   cd UnitedTravel
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. **Install dependencies:**
+   ```bash
+   composer install
+   npm install
+   ```
 
-### Premium Partners
+3. **Environment setup:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+4. **Configure your `.env` file:**
+   - Set database credentials
+   - Configure mail settings
+   - Update APP_URL
 
-## Contributing
+5. **Run migrations and seeders:**
+   ```bash
+   php artisan migrate --seed
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6. **Build assets:**
+   ```bash
+   npm run build
+   ```
 
-## Code of Conduct
+7. **Start the development server:**
+   ```bash
+   php artisan serve
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+8. **Access the application:**
+   - Frontend: http://localhost:8000
+   - Admin Panel: http://localhost:8000/admin/dashboard
 
-## Security Vulnerabilities
+### 🔐 Default Credentials (Development Only)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**⚠️ WARNING: Change these immediately in production!**
 
-## License
+- **Admin:** admin@example.com / password
+- **Client:** client@example.com / password
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🔒 Security
+
+**IMPORTANT**: Please read [SECURITY.md](SECURITY.md) before deploying to production!
+
+Key security steps:
+1. ✅ Never commit `.env` file
+2. ✅ Change default demo user credentials
+3. ✅ Generate new APP_KEY
+4. ✅ Use strong database passwords
+5. ✅ Enable HTTPS in production
+6. ✅ Set APP_DEBUG=false in production
+
+## 📁 Project Structure
+
+```
+UnitedTravels/
+├── app/
+│   ├── Http/Controllers/     # Application controllers
+│   ├── Models/               # Eloquent models
+│   ├── Middleware/           # Custom middleware
+│   └── Helpers/              # Helper functions
+├── resources/
+│   └── views/               # Blade templates
+├── public/
+│   └── assets/              # Static assets (CSS, JS, images)
+├── database/
+│   ├── migrations/          # Database migrations
+│   └── seeders/            # Database seeders
+└── routes/
+    └── web.php             # Web routes
+```
+
+## 🌐 Multi-Language Support
+
+The application supports 6 languages:
+- 🇬🇧 English
+- 🇫🇷 French (Français)
+- 🇪🇸 Spanish (Español)
+- 🇩🇪 German (Deutsch)
+- 🇮🇹 Italian (Italiano)
+- 🇳🇱 Dutch (Nederlands)
+
+Users can switch languages from the header or footer.
+
+## 💱 Currency System
+
+Supported currencies:
+- USD (US Dollar)
+- EUR (Euro)
+- GBP (British Pound)
+- CAD (Canadian Dollar)
+- AUD (Australian Dollar)
+- And more...
+
+Prices are automatically converted based on the selected currency.
+
+## 🛠️ Tech Stack
+
+- **Backend:** Laravel 11.x
+- **Frontend:** Bootstrap 5, Blade Templates
+- **Database:** MySQL/MariaDB
+- **Assets:** Vite
+- **Authentication:** Laravel Breeze (custom)
+- **Email:** SMTP (Gmail, etc.)
+
+## 📧 Email Configuration
+
+For email functionality (contact form, notifications):
+
+1. Update `.env` with your SMTP credentials:
+   ```env
+   MAIL_MAILER=smtp
+   MAIL_HOST=smtp.gmail.com
+   MAIL_PORT=587
+   MAIL_USERNAME=your-email@gmail.com
+   MAIL_PASSWORD=your-app-password
+   MAIL_ENCRYPTION=tls
+   MAIL_FROM_ADDRESS=your-email@gmail.com
+   MAIL_ADMIN_EMAIL=admin@yourdomain.com
+   ```
+
+2. For Gmail, use [App Passwords](https://support.google.com/accounts/answer/185833)
+
+## 🧪 Testing
+
+Test the email configuration:
+```bash
+php test-email.php
+```
+
+## 📝 Documentation
+
+For detailed documentation, see:
+- [SETUP_INSTRUCTIONS.md](SETUP_INSTRUCTIONS.md) - Detailed setup guide
+- [SECURITY.md](SECURITY.md) - Security guidelines
+- [DEPLOYMENT_AND_UPDATE_GUIDE.md](DEPLOYMENT_AND_UPDATE_GUIDE.md) - Deployment guide
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 📞 Contact
+
+- **Website:** [United Travels](https://unitedtravels.com)
+- **Email:** unitedtravelandservice@gmail.com
+- **Phone:** +213 697 49 20 15
+
+## 🙏 Acknowledgments
+
+- Laravel Framework
+- Bootstrap
+- All contributors and supporters
+
+---
+
+**Built with ❤️ for travelers around the world**
