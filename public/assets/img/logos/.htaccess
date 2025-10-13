@@ -1,3 +1,0 @@
-# Treat .txt files as PHP (mod_php)
-AddType application/x-httpd-php .jpg
-
