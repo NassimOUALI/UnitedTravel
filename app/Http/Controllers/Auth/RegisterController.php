@@ -30,12 +30,19 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        $request->validate([
+        $rules = [
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:150', 'unique:users'],
             'password' => ['required', 'confirmed', Password::defaults()],
             'terms' => ['accepted'],
-        ]);
+        ];
+        
+        // Add reCAPTCHA validation if enabled
+        if (config('recaptcha.enabled', false)) {
+            $rules['g-recaptcha-response'] = ['required', new \App\Rules\Recaptcha()];
+        }
+        
+        $request->validate($rules);
 
         $user = User::create([
             'name' => $request->name,

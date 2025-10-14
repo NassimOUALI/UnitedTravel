@@ -105,7 +105,7 @@
                             <tr>
                                 <td class="ps-4">
                                     @if($user->profile_photo)
-                                        <img src="{{ asset('storage/' . $user->profile_photo) }}" 
+                                        <img src="{{ asset('public/' . $user->profile_photo) }}" 
                                              alt="{{ $user->name }}" 
                                              class="rounded-circle" 
                                              style="width: 45px; height: 45px; object-fit: cover;">

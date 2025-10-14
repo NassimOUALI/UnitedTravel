@@ -76,7 +76,7 @@
                                 <!-- Tour Image -->
                                 <div class="col-12 col-md-4 col-lg-3">
                                     @if($tour->image_path)
-                                        <img src="{{ asset($tour->image_path) }}" 
+                                        <img src="{{ asset('public/' . $tour->image_path) }}" 
                                              alt="{{ $tour->title }}" 
                                              class="img-fluid rounded"
                                              style="width: 100%; height: 200px; object-fit: cover;">

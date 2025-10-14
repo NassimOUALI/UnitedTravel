@@ -19,7 +19,7 @@
     @endphp
     @if($headerImage)
         <div class="hero-bg">
-            <img src="{{ asset($headerImage) }}" alt="{{ $tour->title }}">
+            <img src="{{ asset('public/' . $headerImage) }}" alt="{{ $tour->title }}">
         </div>
     @else
         <div class="hero-bg bg-gray-gradient"></div>
@@ -255,7 +255,7 @@
                                         
                                         <!-- Download Button -->
                                         <div class="flex-shrink-0">
-                                            <a href="{{ asset($attachment->path) }}" 
+                                            <a href="{{ asset('public/' . $attachment->path) }}" 
                                                target="_blank" 
                                                download 
                                                class="btn btn-primary btn-download">
@@ -413,7 +413,7 @@
                     @endif
                     <a href="{{ route('tours.show', $related) }}" class="card-img">
                         @if($related->image_path)
-                            <img src="{{ asset($related->image_path) }}" alt="{{ $related->title }}" class="w-100">
+                            <img src="{{ asset('public/' . $related->image_path) }}" alt="{{ $related->title }}" class="w-100">
                         @else
                             <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
                                 <i class="hicon hicon-backpack" style="font-size: 64px; color: #ccc;"></i>

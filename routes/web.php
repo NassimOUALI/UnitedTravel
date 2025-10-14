@@ -15,6 +15,16 @@ use App\Http\Controllers\Auth\RegisterController;
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Temporary: Regenerate autoloader (REMOVE AFTER USE!)
+Route::get('/regenerate-autoloader-temp-12345', function() {
+    $output = [];
+    exec('cd ' . base_path() . ' && composer dump-autoload 2>&1', $output);
+    \Illuminate\Support\Facades\Artisan::call('clear-compiled');
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    return 'Autoloader regenerated! Output: ' . implode('<br>', $output);
+});
+
 // Sitemap & Robots
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
 Route::get('/robots.txt', [\App\Http\Controllers\RobotsController::class, 'index'])->name('robots');

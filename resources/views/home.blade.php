@@ -454,6 +454,366 @@
 </section>
 <!-- /Featured Tours -->
 
+<!-- Google Reviews Section -->
+<section class="p-top-90 p-bottom-90 bg-light" data-aos="fade-up">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-12 col-lg-8 text-center">
+                <div class="section-subtitle mb-2">
+                    <span>Testimonials</span>
+                </div>
+                <h2 class="section-title display-4 mb-3">What Our Clients Say</h2>
+                <p class="text-muted lead">
+                    Don't just take our word for it - hear from travelers who've experienced our services
+                </p>
+            </div>
+        </div>
+
+        <!-- Google Rating Summary -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card border-0 shadow-lg text-center p-4 google-rating-card">
+                    <div class="mb-3">
+                        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
+                             alt="Google" 
+                             height="30"
+                             class="mb-3">
+                    </div>
+                    <div class="display-1 fw-bold text-dark mb-2">5.0</div>
+                    <div class="mb-3">
+                        <i class="text-warning fs-3">★★★★★</i>
+                    </div>
+                    <p class="text-muted mb-3">Based on <strong>28 reviews</strong></p>
+                    <a href="https://search.google.com/local/writereview?placeid=ChIJt9Nn8PDNpw0R5LABuY4Fiv0" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="btn btn-primary btn-lg">
+                        <i class="hicon hicon-edit me-2"></i>
+                        Write a Review
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infinite Scrolling Reviews Slider -->
+        <div class="reviews-slider-container mb-5">
+            <div class="reviews-slider-track">
+                <!-- First Set of Reviews -->
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        N
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Nassim Ouali</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Service excellent ! Très professionnelle, réactive et à l'écoute, elle m'a accompagné à chaque étape. Je recommande vivement !"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        L
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Layla Elm</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Excellent service and professional support throughout our visa process. Highly recommend United Travels!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        A
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Ahmed B.</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Professional team, great service. Made our travel planning so much easier. Thank you!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        S
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Sarah M.</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Outstanding service from start to finish. They handled everything professionally and made our trip unforgettable!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        M
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Mohammed K.</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Best travel agency in Casablanca! Very responsive and helped us with every detail. Highly recommended!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        F
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Fatima Z.</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Wonderful experience! They made our visa application smooth and stress-free. Will definitely use again!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duplicate Set for Seamless Loop -->
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        N
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Nassim Ouali</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Service excellent ! Très professionnelle, réactive et à l'écoute, elle m'a accompagné à chaque étape. Je recommande vivement !"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        L
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Layla Elm</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Excellent service and professional support throughout our visa process. Highly recommend United Travels!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        A
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Ahmed B.</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Professional team, great service. Made our travel planning so much easier. Thank you!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        S
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Sarah M.</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Outstanding service from start to finish. They handled everything professionally and made our trip unforgettable!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        M
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Mohammed K.</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Best travel agency in Casablanca! Very responsive and helped us with every detail. Highly recommended!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-slide">
+                    <div class="card border-0 shadow-sm review-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="review-avatar me-3">
+                                    <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 50px; height: 50px; font-size: 1.25rem; font-weight: 600;">
+                                        F
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1 fw-bold">Fatima Z.</h5>
+                                    <div class="text-warning mb-1">★★★★★</div>
+                                    <small class="text-muted">Google Review</small>
+                                </div>
+                            </div>
+                            <p class="text-muted mb-0">
+                                "Wonderful experience! They made our visa application smooth and stress-free. Will definitely use again!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action Buttons -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 text-center">
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="https://www.instagram.com/united_services_and_events/" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="btn btn-instagram btn-lg">
+                        <i class="hicon hicon-instagram me-2"></i>
+                        Follow us on Instagram
+                    </a>
+                    <a href="https://search.google.com/local/reviews?placeid=ChIJt9Nn8PDNpw0R5LABuY4Fiv0" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="btn btn-outline-primary btn-lg">
+                        <i class="hicon hicon-earth me-2"></i>
+                        Read All 28 Reviews
+                    </a>
+                    <a href="https://www.google.com/maps/place/?q=place_id:ChIJt9Nn8PDNpw0R5LABuY4Fiv0" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="btn btn-outline-secondary btn-lg">
+                        <i class="hicon hicon-flights-pin me-2"></i>
+                        View on Maps
+                    </a>
+                </div>
+                <p class="text-muted mt-4 mb-0">
+                    <small>Follow us on social media & read our verified reviews. Stay updated with our latest tours and travel tips!</small>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Google Reviews Section -->
+
 <!-- Call to Action -->
 <section class="p-top-90 p-bottom-90 bg-primary text-white" data-aos="fade">
     <div class="container">
@@ -484,6 +844,17 @@
 
 @push('styles')
 <style>
+    /* Header wrapper to maintain constant height */
+    .header-inner {
+        transition: height 0.3s ease;
+    }
+    
+    /* When header is sticky, set inner wrapper to navbar height only */
+    .header-sticked .header-inner {
+        height: 90px;
+        overflow: hidden;
+    }
+    
     /* Announcement Cards */
     .announcement-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -697,6 +1068,245 @@
     /* Empty state */
     .text-center.py-5 {
         padding: 3rem 0;
+    }
+
+    /* ==========================================
+       Google Reviews Section Styles
+       ========================================== */
+    
+    .google-rating-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 1.5rem !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .google-rating-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,0.15) !important;
+    }
+
+    .google-rating-card .display-1 {
+        font-size: 4rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .google-rating-card .text-warning {
+        text-shadow: 0 2px 4px rgba(255, 193, 7, 0.3);
+    }
+
+    /* Instagram Button Styling */
+    .btn-instagram {
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        border: none;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);
+    }
+
+    .btn-instagram:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(225, 48, 108, 0.4);
+        color: white;
+    }
+
+    .btn-instagram:active {
+        transform: translateY(0);
+    }
+
+    .review-card {
+        transition: all 0.3s ease;
+        border-radius: 1rem;
+        height: 100%;
+    }
+
+    .review-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.15) !important;
+    }
+
+    .review-card .card-body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .review-avatar {
+        flex-shrink: 0;
+    }
+
+    /* ==========================================
+       Infinite Scrolling Reviews Slider
+       ========================================== */
+
+    /* Keyframe Animation - moves exactly half the width */
+    @keyframes scroll-reviews {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(calc(-400px * 6 - 1.5rem * 6));
+        }
+    }
+
+    /* Container */
+    .reviews-slider-container {
+        overflow: hidden;
+        padding: 20px 0;
+        position: relative;
+        width: 100%;
+    }
+
+    /* Add fade edges for smooth appearance */
+    .reviews-slider-container::before,
+    .reviews-slider-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100px;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .reviews-slider-container::before {
+        left: 0;
+        background: linear-gradient(to right, #f8f9fa, transparent);
+    }
+
+    .reviews-slider-container::after {
+        right: 0;
+        background: linear-gradient(to left, #f8f9fa, transparent);
+    }
+
+    /* Track that moves - must be exactly double the width */
+    .reviews-slider-track {
+        display: inline-flex;
+        gap: 1.5rem;
+        animation: scroll-reviews 20s linear infinite;
+        will-change: transform;
+    }
+
+    /* Pause animation on hover */
+    .reviews-slider-track:hover {
+        animation-play-state: paused;
+    }
+
+    /* Individual review slide */
+    .review-slide {
+        flex: 0 0 400px;
+        width: 400px;
+        flex-shrink: 0;
+    }
+
+    .review-slide .review-card {
+        height: 100%;
+        min-height: 220px;
+    }
+
+    /* Responsive adjustments for Reviews Slider */
+    @media (max-width: 991px) {
+        @keyframes scroll-reviews {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(calc(-350px * 6 - 1.5rem * 6));
+            }
+        }
+
+        .review-slide {
+            flex: 0 0 350px;
+            width: 350px;
+        }
+
+        .reviews-slider-container::before,
+        .reviews-slider-container::after {
+            width: 60px;
+        }
+
+        .reviews-slider-track {
+            animation-duration: 18s;
+        }
+    }
+
+    @media (max-width: 767px) {
+        @keyframes scroll-reviews {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(calc(-320px * 6 - 1rem * 6));
+            }
+        }
+
+        .google-rating-card .display-1 {
+            font-size: 3rem;
+        }
+
+        .google-rating-card {
+            padding: 2rem 1rem !important;
+        }
+
+        .review-card .card-body {
+            padding: 1.5rem !important;
+        }
+
+        .review-slide {
+            flex: 0 0 320px;
+            width: 320px;
+        }
+
+        .reviews-slider-container::before,
+        .reviews-slider-container::after {
+            width: 40px;
+        }
+
+        .reviews-slider-track {
+            gap: 1rem;
+            animation-duration: 15s;
+        }
+    }
+
+    @media (max-width: 575px) {
+        @keyframes scroll-reviews {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(calc(-280px * 6 - 0.75rem * 6));
+            }
+        }
+
+        .google-rating-card .display-1 {
+            font-size: 2.5rem;
+        }
+
+        .review-card h5 {
+            font-size: 1rem;
+        }
+
+        .review-slide {
+            flex: 0 0 280px;
+            width: 280px;
+        }
+
+        .reviews-slider-container::before,
+        .reviews-slider-container::after {
+            width: 30px;
+        }
+
+        .reviews-slider-track {
+            gap: 0.75rem;
+            animation-duration: 12s;
+        }
+
+        .review-slide .review-card {
+            min-height: 200px;
+        }
     }
 </style>
 @endpush

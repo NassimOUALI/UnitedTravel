@@ -36,7 +36,7 @@
                         <!-- Profile Photo -->
                         <div class="mb-3">
                             @if($user->profile_photo)
-                                <img src="{{ asset('storage/' . $user->profile_photo) }}" 
+                                <img src="{{ asset('public/' . $user->profile_photo) }}" 
                                      alt="{{ $user->name }}" 
                                      class="rounded-circle mb-3" 
                                      style="width: 120px; height: 120px; object-fit: cover;">
@@ -309,7 +309,7 @@
                                 <div class="text-center mb-4">
                                     <div class="mb-3" id="photoPreviewContainer">
                                         @if($user->profile_photo)
-                                            <img src="{{ asset('storage/' . $user->profile_photo) }}" 
+                                            <img src="{{ asset('public/' . $user->profile_photo) }}" 
                                                  alt="{{ $user->name }}" 
                                                  class="rounded-circle shadow" 
                                                  style="width: 150px; height: 150px; object-fit: cover;"

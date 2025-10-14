@@ -50,7 +50,7 @@ class DestinationController extends Controller
             for ($i = 0; $i < $imageCount; $i++) {
                 $image = $images[$i];
                 $filename = time() . '_' . $i . '_' . $image->getClientOriginalName();
-                $path = $image->storeAs('destinations', $filename, 'public');
+                $path = $image->storeAs('destinations', $filename, 'public_direct');
                 
                 // Create image record
                 $destination->images()->create([
@@ -105,8 +105,8 @@ class DestinationController extends Controller
                 $image = $destination->images()->find($imageId);
                 if ($image) {
                     // Delete file from storage
-                    if (Storage::disk('public')->exists(str_replace('storage/', '', $image->path))) {
-                        Storage::disk('public')->delete(str_replace('storage/', '', $image->path));
+                    if (Storage::disk('public_direct')->exists(str_replace('storage/', '', $image->path))) {
+                        Storage::disk('public_direct')->delete(str_replace('storage/', '', $image->path));
                     }
                     // Delete database record
                     $image->delete();
@@ -138,7 +138,7 @@ class DestinationController extends Controller
             for ($i = 0; $i < $imageCount; $i++) {
                 $image = $images[$i];
                 $filename = time() . '_' . $i . '_' . $image->getClientOriginalName();
-                $path = $image->storeAs('destinations', $filename, 'public');
+                $path = $image->storeAs('destinations', $filename, 'public_direct');
                 
                 // Determine if this should be primary
                 $isPrimary = false;
@@ -172,15 +172,15 @@ class DestinationController extends Controller
     {
         // Delete all associated images
         foreach ($destination->images as $image) {
-            if (Storage::disk('public')->exists(str_replace('storage/', '', $image->path))) {
-                Storage::disk('public')->delete(str_replace('storage/', '', $image->path));
+            if (Storage::disk('public_direct')->exists(str_replace('storage/', '', $image->path))) {
+                Storage::disk('public_direct')->delete(str_replace('storage/', '', $image->path));
             }
             $image->delete();
         }
         
         // Delete old single image if exists (for backward compatibility)
-        if ($destination->image_path && Storage::disk('public')->exists(str_replace('storage/', '', $destination->image_path))) {
-            Storage::disk('public')->delete(str_replace('storage/', '', $destination->image_path));
+        if ($destination->image_path && Storage::disk('public_direct')->exists(str_replace('storage/', '', $destination->image_path))) {
+            Storage::disk('public_direct')->delete(str_replace('storage/', '', $destination->image_path));
         }
 
         $destination->delete();

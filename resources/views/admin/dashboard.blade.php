@@ -356,7 +356,7 @@
                             <div class="list-group-item list-group-item-action">
                                 <div class="d-flex align-items-center">
                                     @if($destination->image_path)
-                                        <img src="{{ asset($destination->image_path) }}" 
+                                        <img src="{{ asset('public/' . $destination->image_path) }}" 
                                              alt="{{ $destination->name }}" 
                                              class="rounded-3 shadow-sm me-3" 
                                              style="width: 70px; height: 70px; object-fit: cover;">
@@ -415,7 +415,7 @@
                             <div class="list-group-item list-group-item-action">
                                 <div class="d-flex align-items-center">
                                     @if($tour->image_path)
-                                        <img src="{{ asset($tour->image_path) }}" 
+                                        <img src="{{ asset('public/' . $tour->image_path) }}" 
                                              alt="{{ $tour->title }}" 
                                              class="rounded-3 shadow-sm me-3" 
                                              style="width: 70px; height: 70px; object-fit: cover;">

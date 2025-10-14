@@ -27,7 +27,7 @@
         <div class="carousel-inner h-100">
             @foreach($imageCollection as $index => $image)
                 <div class="carousel-item h-100 {{ $index === 0 ? 'active' : '' }}">
-                    <img src="{{ asset($image->path) }}" 
+                    <img src="{{ asset('public/' . $image->path) }}" 
                          class="d-block w-100 h-100" 
                          alt="{{ $image->alt_text ?? $altPrefix . ' ' . ($index + 1) }}"
                          style="object-fit: cover; object-position: center;">

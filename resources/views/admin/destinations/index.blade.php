@@ -108,7 +108,7 @@
                                     }
                                 @endphp
                                 @if($thumbnailImage)
-                                    <img src="{{ asset($thumbnailImage) }}" 
+                                    <img src="{{ asset('public/' . $thumbnailImage) }}" 
                                          alt="{{ $destination->name }}" 
                                          class="rounded-3 shadow-sm" 
                                          style="width: 65px; height: 65px; object-fit: cover;">

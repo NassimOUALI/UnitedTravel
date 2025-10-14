@@ -63,7 +63,7 @@ class ProfileController extends Controller
             if ($request->boolean('remove_photo')) {
                 if ($user->profile_photo) {
                     try {
-                        Storage::disk('public')->delete($user->profile_photo);
+                        Storage::disk('public_direct')->delete(str_replace('storage/', '', $user->profile_photo));
                         $user->profile_photo = null;
                         $user->save();
                         return redirect()->route('profile.edit')->with('success', 'Profile photo removed successfully!');
@@ -105,17 +105,18 @@ class ProfileController extends Controller
                 try {
                     // Delete old photo if exists
                     if ($user->profile_photo) {
-                        Storage::disk('public')->delete($user->profile_photo);
+                        Storage::disk('public_direct')->delete(str_replace('storage/', '', $user->profile_photo));
                     }
                     
                     // Store new photo
-                    $path = $file->store('profile_photos', 'public');
+                    $path = $file->store('profile_photos', 'public_direct');
                     
                     if (!$path) {
                         return back()->withErrors(['profile_photo' => 'Failed to upload the image. Please try again.']);
                     }
                     
-                    $user->profile_photo = $path;
+                    // Store with 'storage/' prefix for consistency with tours/destinations
+                    $user->profile_photo = 'storage/' . $path;
                     $user->save();
                     
                     return redirect()->route('profile.edit')->with('success', 'Profile photo updated successfully!');

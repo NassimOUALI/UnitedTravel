@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-6">
-                                    <button class="btn btn-primary w-100" type="submit">
+                                    <button class="btn btn-primary w-100" type="submit" id="register-submit">
                                         <i class="hicon hicon-edit"></i>
                                         <span>Register</span>
                                     </button>
@@ -102,6 +102,16 @@
                                 <span>Already have an account? <a href="{{ route('login') }}">Login</a></span>
                             </div>
                         </form>
+                        
+                        @if(config('recaptcha.enabled'))
+                        <div class="text-center mt-3">
+                            <small class="text-muted">
+                                This site is protected by reCAPTCHA and the Google
+                                <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+                                <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+                            </small>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -111,4 +121,43 @@
 <!-- /Register -->
 
 @endsection
+
+@if(config('recaptcha.enabled') && config('recaptcha.site_key'))
+@push('scripts')
+<script src="https://www.google.com/recaptcha/api.js?render={{ config('recaptcha.site_key') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form[action="{{ route('register') }}"]');
+        const submitButton = document.getElementById('register-submit');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Disable submit button to prevent double submission
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Verifying...';
+            
+            grecaptcha.ready(function() {
+                grecaptcha.execute('{{ config('recaptcha.site_key') }}', {action: 'register'}).then(function(token) {
+                    // Add the token to the form
+                    let input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'g-recaptcha-response';
+                    input.value = token;
+                    form.appendChild(input);
+                    
+                    // Submit the form
+                    form.submit();
+                }).catch(function(error) {
+                    console.error('reCAPTCHA error:', error);
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="hicon hicon-edit"></i><span>Register</span>';
+                    alert('Security verification failed. Please refresh the page and try again.');
+                });
+            });
+        });
+    });
+</script>
+@endpush
+@endif
 

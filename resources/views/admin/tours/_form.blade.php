@@ -98,35 +98,178 @@
     </div>
 </div>
 
-<!-- Destinations (Multi-select) -->
+<!-- Destinations (Multi-select with Checkboxes) -->
 <div class="mb-4">
-    <label for="destinations" class="form-label fw-bold">
-        Destinations
-    </label>
-    <select class="form-select @error('destinations') is-invalid @enderror" 
-            id="destinations" 
-            name="destinations[]" 
-            multiple 
-            size="5">
-        @foreach($destinations as $destination)
-            @php
-                $selectedDestinations = old('destinations', 
-                    ($tour->exists && $tour->relationLoaded('destinations')) 
-                        ? $tour->destinations->pluck('id')->toArray() 
-                        : []
-                );
-            @endphp
-            <option value="{{ $destination->id }}"
-                {{ in_array($destination->id, $selectedDestinations) ? 'selected' : '' }}>
-                {{ $destination->name }} ({{ $destination->location }})
-            </option>
-        @endforeach
-    </select>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <label class="form-label fw-bold mb-0">
+            Destinations
+        </label>
+        @if($destinations->count() > 0)
+            <div class="btn-group btn-group-sm" role="group">
+                <button type="button" class="btn btn-outline-primary btn-sm" onclick="toggleAllDestinations(true)">
+                    <i class="hicon hicon-check"></i> Select All
+                </button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="toggleAllDestinations(false)">
+                    <i class="hicon hicon-close"></i> Clear All
+                </button>
+            </div>
+        @endif
+    </div>
+    
+    @php
+        $selectedDestinations = old('destinations', 
+            ($tour->exists && $tour->relationLoaded('destinations')) 
+                ? $tour->destinations->pluck('id')->toArray() 
+                : []
+        );
+    @endphp
+    
+    @if($destinations->count() > 0)
+        <div class="border rounded p-3 bg-light destinations-container" style="max-height: 350px; overflow-y: auto;">
+            <div class="row g-2">
+                @foreach($destinations as $destination)
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="form-check destination-checkbox">
+                            <input class="form-check-input destination-check" 
+                                   type="checkbox" 
+                                   name="destinations[]" 
+                                   value="{{ $destination->id }}"
+                                   id="destination_{{ $destination->id }}"
+                                   {{ in_array($destination->id, $selectedDestinations) ? 'checked' : '' }}>
+                            <label class="form-check-label w-100" for="destination_{{ $destination->id }}">
+                                <div class="destination-label-content">
+                                    <strong class="d-block text-dark">{{ $destination->name }}</strong>
+                                    <small class="text-muted">
+                                        <i class="hicon hicon-flights-pin" style="font-size: 0.75rem;"></i>
+                                        {{ $destination->location }}
+                                    </small>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-2">
+            <small class="text-muted">
+                <i class="hicon hicon-info-circle"></i> 
+                Tap to select/deselect destinations
+            </small>
+            <small class="text-muted">
+                <span id="selectedDestinationCount">{{ count($selectedDestinations) }}</span> selected
+            </small>
+        </div>
+    @else
+        <div class="alert alert-warning mb-0">
+            <i class="hicon hicon-warning"></i> 
+            No destinations available. <a href="{{ route('admin.destinations.create') }}" class="alert-link">Create one first</a>.
+        </div>
+    @endif
+    
     @error('destinations')
-        <div class="invalid-feedback">{{ $message }}</div>
+        <div class="text-danger small mt-2">{{ $message }}</div>
     @enderror
-    <small class="text-muted">Hold Ctrl/Cmd to select multiple destinations this tour covers</small>
 </div>
+
+<style>
+    /* Enhanced checkbox styling for mobile */
+    .destination-checkbox {
+        padding: 0.75rem;
+        border-radius: 0.375rem;
+        transition: all 0.2s ease;
+        background: white;
+        border: 1px solid #dee2e6;
+        margin-bottom: 0;
+    }
+    
+    .destination-checkbox:hover {
+        background-color: #f8f9fa;
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.1rem rgba(13, 110, 253, 0.1);
+    }
+    
+    .destination-checkbox .form-check-input {
+        margin-top: 0.25rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        cursor: pointer;
+    }
+    
+    .destination-checkbox .form-check-label {
+        cursor: pointer;
+        padding-left: 0.5rem;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .destination-checkbox input:checked ~ label {
+        font-weight: 500;
+    }
+    
+    .destination-checkbox input:checked ~ label .destination-label-content strong {
+        color: #0d6efd;
+    }
+    
+    .destination-label-content {
+        line-height: 1.4;
+    }
+    
+    /* Better scrollbar for destinations container */
+    .destinations-container {
+        scrollbar-width: thin;
+        scrollbar-color: #0d6efd #f8f9fa;
+    }
+    
+    .destinations-container::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .destinations-container::-webkit-scrollbar-track {
+        background: #f8f9fa;
+        border-radius: 4px;
+    }
+    
+    .destinations-container::-webkit-scrollbar-thumb {
+        background: #0d6efd;
+        border-radius: 4px;
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 576px) {
+        .destination-checkbox {
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .destination-checkbox .form-check-input {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        
+        .destination-label-content strong {
+            font-size: 1rem;
+        }
+        
+        .destination-label-content small {
+            font-size: 0.85rem;
+        }
+        
+        /* Stack buttons on mobile */
+        .btn-group {
+            flex-direction: column;
+            width: auto;
+        }
+        
+        .btn-group .btn {
+            border-radius: 0.25rem !important;
+            margin-bottom: 0.25rem;
+        }
+        
+        .btn-group .btn:last-child {
+            margin-bottom: 0;
+        }
+    }
+</style>
 
 <!-- Discount (Optional) -->
 <div class="mb-4">
@@ -167,7 +310,7 @@
                         @foreach($tour->images as $index => $image)
                             <div class="col-md-4" data-image-id="{{ $image->id }}">
                                 <div class="card {{ $image->is_primary ? 'border-primary border-2' : '' }}">
-                                    <img src="{{ asset($image->path) }}" class="card-img-top" alt="Tour image {{ $index + 1 }}">
+                                    <img src="{{ asset('public/' . $image->path) }}" class="card-img-top" alt="Tour image {{ $index + 1 }}">
                                     <div class="card-body p-2">
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <small class="text-muted">Image {{ $index + 1 }}</small>
@@ -255,7 +398,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a href="{{ asset($attachment->path) }}" 
+                                <a href="{{ asset('public/' . $attachment->path) }}" 
                                    target="_blank" 
                                    class="btn btn-sm btn-outline-primary me-2">
                                     <i class="hicon hicon-download"></i>
@@ -453,6 +596,32 @@ function markImageForDeletion(imageId) {
             previewContainer.style.display = 'none';
         }
     }
+    
+    // Destinations Select All/Clear All functionality
+    function toggleAllDestinations(selectAll) {
+        const checkboxes = document.querySelectorAll('.destination-check');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = selectAll;
+        });
+        updateDestinationCount();
+    }
+    
+    // Update destination count
+    function updateDestinationCount() {
+        const checkedBoxes = document.querySelectorAll('.destination-check:checked');
+        const countElement = document.getElementById('selectedDestinationCount');
+        if (countElement) {
+            countElement.textContent = checkedBoxes.length;
+        }
+    }
+    
+    // Add event listeners to all destination checkboxes
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkboxes = document.querySelectorAll('.destination-check');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateDestinationCount);
+        });
+    });
 </script>
 @endpush
 

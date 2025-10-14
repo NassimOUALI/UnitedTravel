@@ -23,8 +23,8 @@ class HomeController extends Controller
             ->get();
 
         // Get featured tours (limit to 6)
+        // Show all tours, prioritizing those with defined prices
         $featuredTours = Tour::with(['discount', 'destinations', 'images'])
-            ->where('is_price_defined', true)
             ->latest()
             ->take(6)
             ->get();

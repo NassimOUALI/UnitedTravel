@@ -58,7 +58,7 @@ class TourController extends Controller
             for ($i = 0; $i < $imageCount; $i++) {
                 $image = $images[$i];
                 $filename = time() . '_' . $i . '_' . $image->getClientOriginalName();
-                $path = $image->storeAs('tours', $filename, 'public');
+                $path = $image->storeAs('tours', $filename, 'public_direct');
                 
                 // Create image record
                 $tour->images()->create([
@@ -86,7 +86,7 @@ class TourController extends Controller
                 // Sanitize filename to prevent path traversal attacks
                 $safeFilename = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', basename($originalName));
                 $filename = time() . '_' . $i . '_' . $safeFilename;
-                $path = $file->storeAs('tour-attachments', $filename, 'public');
+                $path = $file->storeAs('tour-attachments', $filename, 'public_direct');
                 
                 // Determine file type
                 $mimeType = $file->getMimeType();
@@ -153,8 +153,8 @@ class TourController extends Controller
                 $image = $tour->images()->find($imageId);
                 if ($image) {
                     // Delete file from storage
-                    if (Storage::disk('public')->exists(str_replace('storage/', '', $image->path))) {
-                        Storage::disk('public')->delete(str_replace('storage/', '', $image->path));
+                    if (Storage::disk('public_direct')->exists(str_replace('storage/', '', $image->path))) {
+                        Storage::disk('public_direct')->delete(str_replace('storage/', '', $image->path));
                     }
                     // Delete database record
                     $image->delete();
@@ -186,7 +186,7 @@ class TourController extends Controller
             for ($i = 0; $i < $imageCount; $i++) {
                 $image = $images[$i];
                 $filename = time() . '_' . $i . '_' . $image->getClientOriginalName();
-                $path = $image->storeAs('tours', $filename, 'public');
+                $path = $image->storeAs('tours', $filename, 'public_direct');
                 
                 // Determine if this should be primary
                 $isPrimary = false;
@@ -218,8 +218,8 @@ class TourController extends Controller
                 $attachment = $tour->attachments()->find($attachmentId);
                 if ($attachment) {
                     // Delete file from storage
-                    if (Storage::disk('public')->exists(str_replace('storage/', '', $attachment->path))) {
-                        Storage::disk('public')->delete(str_replace('storage/', '', $attachment->path));
+                    if (Storage::disk('public_direct')->exists(str_replace('storage/', '', $attachment->path))) {
+                        Storage::disk('public_direct')->delete(str_replace('storage/', '', $attachment->path));
                     }
                     // Delete database record
                     $attachment->delete();
@@ -238,7 +238,7 @@ class TourController extends Controller
                 $file = $attachments[$i];
                 $originalName = $file->getClientOriginalName();
                 $filename = time() . '_' . $i . '_' . $originalName;
-                $path = $file->storeAs('tour-attachments', $filename, 'public');
+                $path = $file->storeAs('tour-attachments', $filename, 'public_direct');
                 
                 // Determine file type
                 $mimeType = $file->getMimeType();
@@ -268,23 +268,23 @@ class TourController extends Controller
     {
         // Delete all associated images
         foreach ($tour->images as $image) {
-            if (Storage::disk('public')->exists(str_replace('storage/', '', $image->path))) {
-                Storage::disk('public')->delete(str_replace('storage/', '', $image->path));
+            if (Storage::disk('public_direct')->exists(str_replace('storage/', '', $image->path))) {
+                Storage::disk('public_direct')->delete(str_replace('storage/', '', $image->path));
             }
             $image->delete();
         }
         
         // Delete all associated attachments
         foreach ($tour->attachments as $attachment) {
-            if (Storage::disk('public')->exists(str_replace('storage/', '', $attachment->path))) {
-                Storage::disk('public')->delete(str_replace('storage/', '', $attachment->path));
+            if (Storage::disk('public_direct')->exists(str_replace('storage/', '', $attachment->path))) {
+                Storage::disk('public_direct')->delete(str_replace('storage/', '', $attachment->path));
             }
             $attachment->delete();
         }
         
         // Delete old single image if exists (for backward compatibility)
-        if ($tour->image_path && Storage::disk('public')->exists(str_replace('storage/', '', $tour->image_path))) {
-            Storage::disk('public')->delete(str_replace('storage/', '', $tour->image_path));
+        if ($tour->image_path && Storage::disk('public_direct')->exists(str_replace('storage/', '', $tour->image_path))) {
+            Storage::disk('public_direct')->delete(str_replace('storage/', '', $tour->image_path));
         }
 
         $tour->delete();

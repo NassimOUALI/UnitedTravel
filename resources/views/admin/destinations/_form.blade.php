@@ -88,7 +88,7 @@
                         @foreach($destination->images as $index => $image)
                             <div class="col-md-4" data-image-id="{{ $image->id }}">
                                 <div class="card {{ $image->is_primary ? 'border-primary border-2' : '' }}">
-                                    <img src="{{ asset($image->path) }}" class="card-img-top" alt="Destination image {{ $index + 1 }}">
+                                    <img src="{{ asset('public/' . $image->path) }}" class="card-img-top" alt="Destination image {{ $index + 1 }}">
                                     <div class="card-body p-2">
                                         <div class="d-flex justify-content-between align-items-center mb-2">
                                             <small class="text-muted">Image {{ $index + 1 }}</small>

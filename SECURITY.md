@@ -12,6 +12,26 @@ The `.env` file contains sensitive information such as:
 - Application keys
 - API tokens
 
+### Rate Limiting & Bot Protection
+
+The application includes multiple layers of bot protection:
+
+1. **Rate Limiting** (Already active):
+   - Login attempts: 5 per minute
+   - Registration attempts: 3 per minute
+   - Contact form submissions: 3 per minute
+
+2. **Google reCAPTCHA v3** (Requires setup):
+   - Invisible CAPTCHA on login and registration
+   - Score-based verification (0.0-1.0)
+   - See `RECAPTCHA_SETUP.md` for configuration guide
+
+3. **Security Headers**:
+   - Content Security Policy (CSP)
+   - XSS Protection
+   - Frame Options
+   - HTTPS Strict Transport Security
+
 ### Initial Setup Security Checklist
 
 When deploying this application, ensure you:
@@ -46,16 +66,25 @@ When deploying this application, ensure you:
    SEED_DEMO_USERS=false  # Keep this false!
    ```
 
-4. **Update email configuration:**
+4. **Configure Google reCAPTCHA (Recommended):**
+   ```env
+   RECAPTCHA_ENABLED=true
+   RECAPTCHA_SITE_KEY=your_site_key_here
+   RECAPTCHA_SECRET_KEY=your_secret_key_here
+   RECAPTCHA_SCORE_THRESHOLD=0.5
+   ```
+   See `RECAPTCHA_SETUP.md` for detailed setup instructions.
+
+5. **Update email configuration:**
    - Use your own SMTP credentials
    - Never use default/example email addresses in production
 
-5. **Database security:**
+6. **Database security:**
    - Use strong, unique database passwords
    - Never use `root` with no password in production
    - Restrict database access to localhost only
 
-6. **Set proper file permissions:**
+7. **Set proper file permissions:**
    ```bash
    chmod -R 775 storage bootstrap/cache
    chown -R www-data:www-data storage bootstrap/cache

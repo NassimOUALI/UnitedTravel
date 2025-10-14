@@ -396,7 +396,7 @@
                     <div class="dropdown">
                         <div class="admin-user-menu" data-bs-toggle="dropdown" aria-expanded="false">
                             @if(auth()->user()->profile_photo)
-                                <img src="{{ asset('storage/' . auth()->user()->profile_photo) }}" alt="{{ auth()->user()->name }}" class="admin-user-avatar">
+                                <img src="{{ asset('public/' . auth()->user()->profile_photo) }}" alt="{{ auth()->user()->name }}" class="admin-user-avatar">
                             @else
                                 <div class="admin-user-avatar bg-primary text-white d-flex align-items-center justify-content-center" style="font-weight: 600;">
                                     {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}

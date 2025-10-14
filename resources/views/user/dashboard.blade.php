@@ -177,7 +177,7 @@
                         <h2 class="h4 mb-4 text-body-emphasis">Account Information</h2>
                         <div class="text-center mb-4">
                             @if($user->profile_photo)
-                                <img src="{{ asset('storage/' . $user->profile_photo) }}" 
+                                <img src="{{ asset('public/' . $user->profile_photo) }}" 
                                      alt="{{ $user->name }}" 
                                      class="rounded-circle mb-3" 
                                      style="width: 100px; height: 100px; object-fit: cover;">

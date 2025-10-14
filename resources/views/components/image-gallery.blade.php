@@ -14,7 +14,7 @@
             <div class="carousel-inner rounded">
                 @foreach($imageCollection as $index => $image)
                     <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                        <img src="{{ asset($image->path) }}" 
+                        <img src="{{ asset('public/' . $image->path) }}" 
                              class="d-block w-100 gallery-main-image" 
                              alt="{{ $image->alt_text ?? $title . ' - Image ' . ($index + 1) }}"
                              style="height: 500px; object-fit: cover; object-position: center;">
@@ -51,7 +51,7 @@
                                     data-bs-target="#{{ $carouselId }}" 
                                     data-bs-slide-to="{{ $index }}"
                                     aria-label="View image {{ $index + 1 }}">
-                                <img src="{{ asset($image->path) }}" 
+                                <img src="{{ asset('public/' . $image->path) }}" 
                                      alt="Thumbnail {{ $index + 1 }}"
                                      class="img-thumbnail"
                                      style="width: 100px; height: 70px; object-fit: cover;">

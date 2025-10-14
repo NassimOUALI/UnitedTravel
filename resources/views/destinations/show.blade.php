@@ -19,7 +19,7 @@
     @endphp
     @if($headerImage)
         <div class="hero-bg">
-            <img src="{{ asset($headerImage) }}" alt="{{ $destination->name }}">
+            <img src="{{ asset('public/' . $headerImage) }}" alt="{{ $destination->name }}">
         </div>
     @else
         <div class="hero-bg bg-gray-gradient"></div>
