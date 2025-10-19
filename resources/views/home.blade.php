@@ -195,265 +195,6 @@
 </section>
 <!-- /Featured Stats -->
 
-<!-- Announcements -->
-@if($announcements->count() > 0)
-<section class="p-top-90 p-bottom-90 bg-primary-gradient" data-aos="fade">
-    <div class="container">
-        <!-- Section Header -->
-        <div class="row align-items-end mb-5">
-            <div class="col-12 col-lg-8">
-                <div class="block-title">
-                    <small class="sub-title">Stay Updated</small>
-                    <h2 class="h1 title">Latest News & Announcements</h2>
-                    <p class="mb-0">
-                        Stay informed about our latest updates, special offers, and travel news. 
-                        Be the first to know about exciting opportunities and important information.
-                    </p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4 text-lg-end mt-3 mt-lg-0">
-                @if($announcements->count() > 4)
-                    <a href="#" class="btn btn-outline-dark btn-uppercase">
-                        <span>View all news</span>
-                        <i class="hicon hicon-thin-arrow-right"></i>
-                    </a>
-                @endif
-            </div>
-        </div>
-
-        <!-- Announcements Grid -->
-        <div class="row g-4">
-            @foreach($announcements as $announcement)
-            <div class="col-12 col-lg-6">
-                <!-- Announcement Card -->
-                <div class="announcement-card card border-0 shadow-lg h-100">
-                    <div class="card-header bg-white border-0 p-4 pb-0">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <span class="badge bg-primary">
-                                <i class="hicon hicon-bell me-1"></i>
-                                Announcement
-                            </span>
-                            <small class="text-muted">
-                                <i class="hicon hicon-calendar me-1"></i>
-                                {{ $announcement->created_at->format('M d, Y') }}
-                            </small>
-                        </div>
-                    </div>
-                    <div class="card-body p-4">
-                        <h3 class="h4 mb-3 card-title">
-                            <a href="#" class="text-decoration-none text-dark hover-primary">
-                                {{ $announcement->title }}
-                            </a>
-                        </h3>
-                        <p class="card-text text-muted mb-0">
-                            {{ Str::limit($announcement->content, 180) }}
-                        </p>
-                    </div>
-                    <div class="card-footer bg-transparent border-0 p-4 pt-0">
-                        <a href="#" class="btn btn-sm btn-outline-primary">
-                            <span>Read More</span>
-                            <i class="hicon hicon-thin-arrow-right ms-1"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- /Announcement Card -->
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif
-<!-- /Announcements -->
-
-<!-- Featured Destinations -->
-<section class="p-top-90 p-bottom-90" data-aos="fade">
-    <div class="container">
-        <!-- Section Header -->
-        <div class="row align-items-end mb-5">
-            <div class="col-12 col-lg-8">
-                <div class="block-title">
-                    <small class="sub-title">Explore the world</small>
-                    <h2 class="h1 title">Popular Destinations</h2>
-                    <p class="mb-0">
-                        Discover our most popular travel destinations. From exotic beaches to historic cities, 
-                        find your perfect getaway and start planning your dream vacation today.
-                    </p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4 text-lg-end mt-3 mt-lg-0">
-                <a href="{{ route('destinations.index') }}" class="btn btn-primary btn-uppercase">
-                    <span>View all destinations</span>
-                    <i class="hicon hicon-flights-one-ways"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Destinations Grid -->
-        <div class="row g-4">
-            @forelse($featuredDestinations as $destination)
-            <div class="col-12 col-xxl-3 col-xl-4 col-md-6">
-                <!-- Destination Card -->
-                <a href="{{ route('destinations.show', $destination->id) }}" 
-                   class="home-destination-card destination bottom-overlay hover-effect rounded h-100 d-block">
-                    <figure class="image-hover image-hover-overlay mb-0">
-                        <x-image-carousel 
-                            :images="$destination->images" 
-                            :item-id="'dest-' . $destination->id" 
-                            :fallback-image="$destination->image_path"
-                            :alt-prefix="$destination->name" />
-                        <i class="hicon hicon-plus-thin image-hover-icon"></i>
-                    </figure>
-                    <div class="bottom-overlay-content">
-                        <div class="destination-content">
-                            <div class="destination-info">
-                                <h3 class="destination-title mb-2">{{ $destination->name }}</h3>
-                                <span class="text-white-50 small d-block mb-1">
-                                    <i class="hicon hicon-location me-1"></i>
-                                    {{ $destination->location }}
-                                </span>
-                                <span class="text-white-50 small">
-                                    {{ $destination->tours->count() }} {{ Str::plural('tour', $destination->tours->count()) }} available
-                                </span>
-                            </div>
-                            <span class="circle-icon circle-icon-link mt-3">
-                                <i class="hicon hicon-flights-pin"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                <!-- /Destination Card -->
-            </div>
-            @empty
-            <div class="col-12">
-                <div class="text-center py-5">
-                    <div class="mb-4">
-                        <i class="hicon hicon-location text-muted" style="font-size: 80px;"></i>
-                    </div>
-                    <h3 class="h4 mb-3">No Destinations Available Yet</h3>
-                    <p class="text-muted mb-4">
-                        Check back soon for amazing travel destinations!
-                    </p>
-                </div>
-            </div>
-            @endforelse
-        </div>
-    </div>
-</section>
-<!-- /Featured Destinations -->
-
-<!-- Featured Tours -->
-<section class="p-top-90 p-bottom-90 bg-gray-gradient" data-aos="fade">
-    <div class="container">
-        <!-- Section Header -->
-        <div class="row align-items-end mb-5">
-            <div class="col-12 col-lg-8">
-                <div class="block-title">
-                    <small class="sub-title">Best Offers</small>
-                    <h2 class="h1 title">Featured Tour Packages</h2>
-                    <p class="mb-0">
-                        Browse our selection of curated tour packages designed to give you 
-                        the best travel experience at unbeatable prices.
-                    </p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-4 text-lg-end mt-3 mt-lg-0">
-                <a href="{{ route('tours.index') }}" class="btn btn-outline-primary btn-uppercase">
-                    <span>View all tours</span>
-                    <i class="hicon hicon-flights-one-ways"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Tours Grid -->
-        <div class="row g-4">
-            @forelse($featuredTours as $tour)
-            <div class="col-12 col-xxl-4 col-xl-4 col-lg-6">
-                <!-- Tour Card -->
-                <div class="home-tour-card destination bottom-overlay hover-effect rounded h-100 position-relative">
-                    @if($tour->discount)
-                        <div class="float-badge bg-danger">
-                            <span>{{ $tour->discount->percentage }}% OFF</span>
-                        </div>
-                    @endif
-                    <!-- Wishlist Button -->
-                    <div class="position-absolute top-0 end-0 m-3" style="z-index: 10;">
-                        <x-wishlist-button :tour-id="$tour->id" />
-                    </div>
-                    <a href="{{ route('tours.show', $tour->id) }}" class="tour-card-link d-block h-100">
-                        <figure class="image-hover image-hover-overlay mb-0">
-                            <x-image-carousel 
-                                :images="$tour->images" 
-                                :item-id="$tour->id" 
-                                :fallback-image="$tour->image_path"
-                                :alt-prefix="$tour->title" />
-                            <i class="hicon hicon-plus-thin image-hover-icon"></i>
-                        </figure>
-                        <div class="bottom-overlay-content">
-                            <div class="tour-card-content">
-                                <div class="tour-info">
-                                    <h3 class="destination-title mb-2">{{ $tour->title }}</h3>
-                                    @if($tour->destinations->count() > 0)
-                                        <span class="text-white-50 small d-block mb-1">
-                                            <i class="hicon hicon-location me-1"></i>
-                                            {{ $tour->destinations->first()->name }}
-                                        </span>
-                                    @endif
-                                    @if($tour->start_date && $tour->end_date)
-                                        <span class="text-white-50 small d-block">
-                                            <i class="hicon hicon-calendar me-1"></i>
-                                            {{ $tour->start_date->format('M d') }} - {{ $tour->end_date->format('M d, Y') }}
-                                        </span>
-                                    @endif
-                                    @if($tour->duration)
-                                        <span class="text-white-50 small d-block mt-1">
-                                            <i class="hicon hicon-time-clock me-1"></i>
-                                            {{ $tour->duration }}
-                                        </span>
-                                    @endif
-                                </div>
-                                <div class="tour-price text-end">
-                                    @if($tour->is_price_defined && $tour->price)
-                                        @if($tour->discount)
-                                            <small class="text-decoration-line-through text-white-50 d-block">
-                                                {{ format_price($tour->price) }}
-                                            </small>
-                                            <span class="h5 mb-0 text-white fw-bold">
-                                                {{ format_price($tour->price * (1 - $tour->discount->percentage / 100)) }}
-                                            </span>
-                                        @else
-                                            <span class="h5 mb-0 text-white fw-bold">
-                                                {{ format_price($tour->price) }}
-                                            </span>
-                                        @endif
-                                        <small class="text-white-50 d-block">per person</small>
-                                    @else
-                                        <span class="badge bg-white text-dark">Contact Us</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- /Tour Card -->
-            </div>
-            @empty
-            <div class="col-12">
-                <div class="text-center py-5">
-                    <div class="mb-4">
-                        <i class="hicon hicon-backpack text-muted" style="font-size: 80px;"></i>
-                    </div>
-                    <h3 class="h4 mb-3">No Tours Available Yet</h3>
-                    <p class="text-muted mb-4">
-                        Check back soon for exciting travel packages!
-                    </p>
-                </div>
-            </div>
-            @endforelse
-        </div>
-    </div>
-</section>
-<!-- /Featured Tours -->
-
 <!-- Google Reviews Section -->
 <section class="p-top-90 p-bottom-90 bg-light" data-aos="fade-up">
     <div class="container">
@@ -813,6 +554,265 @@
     </div>
 </section>
 <!-- /Google Reviews Section -->
+
+<!-- Announcements -->
+@if($announcements->count() > 0)
+<section class="p-top-90 p-bottom-90 bg-primary-gradient" data-aos="fade">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row align-items-end mb-5">
+            <div class="col-12 col-lg-8">
+                <div class="block-title">
+                    <small class="sub-title">Stay Updated</small>
+                    <h2 class="h1 title">Latest News & Announcements</h2>
+                    <p class="mb-0">
+                        Stay informed about our latest updates, special offers, and travel news. 
+                        Be the first to know about exciting opportunities and important information.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 text-lg-end mt-3 mt-lg-0">
+                @if($announcements->count() > 4)
+                    <a href="#" class="btn btn-outline-dark btn-uppercase">
+                        <span>View all news</span>
+                        <i class="hicon hicon-thin-arrow-right"></i>
+                    </a>
+                @endif
+            </div>
+        </div>
+
+        <!-- Announcements Grid -->
+        <div class="row g-4">
+            @foreach($announcements as $announcement)
+            <div class="col-12 col-lg-6">
+                <!-- Announcement Card -->
+                <div class="announcement-card card border-0 shadow-lg h-100">
+                    <div class="card-header bg-white border-0 p-4 pb-0">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <span class="badge bg-primary">
+                                <i class="hicon hicon-bell me-1"></i>
+                                Announcement
+                            </span>
+                            <small class="text-muted">
+                                <i class="hicon hicon-calendar me-1"></i>
+                                {{ $announcement->created_at->format('M d, Y') }}
+                            </small>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <h3 class="h4 mb-3 card-title">
+                            <a href="#" class="text-decoration-none text-dark hover-primary">
+                                {{ $announcement->title }}
+                            </a>
+                        </h3>
+                        <p class="card-text text-muted mb-0">
+                            {{ Str::limit($announcement->content, 180) }}
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 p-4 pt-0">
+                        <a href="#" class="btn btn-sm btn-outline-primary">
+                            <span>Read More</span>
+                            <i class="hicon hicon-thin-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- /Announcement Card -->
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+<!-- /Announcements -->
+
+<!-- Featured Destinations -->
+<section class="p-top-90 p-bottom-90" data-aos="fade">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row align-items-end mb-5">
+            <div class="col-12 col-lg-8">
+                <div class="block-title">
+                    <small class="sub-title">Explore the world</small>
+                    <h2 class="h1 title">Popular Destinations</h2>
+                    <p class="mb-0">
+                        Discover our most popular travel destinations. From exotic beaches to historic cities, 
+                        find your perfect getaway and start planning your dream vacation today.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 text-lg-end mt-3 mt-lg-0">
+                <a href="{{ route('destinations.index') }}" class="btn btn-primary btn-uppercase">
+                    <span>View all destinations</span>
+                    <i class="hicon hicon-flights-one-ways"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Destinations Grid -->
+        <div class="row g-4">
+            @forelse($featuredDestinations as $destination)
+            <div class="col-12 col-xxl-3 col-xl-4 col-md-6">
+                <!-- Destination Card -->
+                <a href="{{ route('destinations.show', $destination->id) }}" 
+                   class="home-destination-card destination bottom-overlay hover-effect rounded h-100 d-block">
+                    <figure class="image-hover image-hover-overlay mb-0">
+                        <x-image-carousel 
+                            :images="$destination->images" 
+                            :item-id="'dest-' . $destination->id" 
+                            :fallback-image="$destination->image_path"
+                            :alt-prefix="$destination->name" />
+                        <i class="hicon hicon-plus-thin image-hover-icon"></i>
+                    </figure>
+                    <div class="bottom-overlay-content">
+                        <div class="destination-content">
+                            <div class="destination-info">
+                                <h3 class="destination-title mb-2">{{ $destination->name }}</h3>
+                                <span class="text-white-50 small d-block mb-1">
+                                    <i class="hicon hicon-location me-1"></i>
+                                    {{ $destination->location }}
+                                </span>
+                                <span class="text-white-50 small">
+                                    {{ $destination->tours->count() }} {{ Str::plural('tour', $destination->tours->count()) }} available
+                                </span>
+                            </div>
+                            <span class="circle-icon circle-icon-link mt-3">
+                                <i class="hicon hicon-flights-pin"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                <!-- /Destination Card -->
+            </div>
+            @empty
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <div class="mb-4">
+                        <i class="hicon hicon-location text-muted" style="font-size: 80px;"></i>
+                    </div>
+                    <h3 class="h4 mb-3">No Destinations Available Yet</h3>
+                    <p class="text-muted mb-4">
+                        Check back soon for amazing travel destinations!
+                    </p>
+                </div>
+            </div>
+            @endforelse
+        </div>
+    </div>
+</section>
+<!-- /Featured Destinations -->
+
+<!-- Featured Tours -->
+<section class="p-top-90 p-bottom-90 bg-gray-gradient" data-aos="fade">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row align-items-end mb-5">
+            <div class="col-12 col-lg-8">
+                <div class="block-title">
+                    <small class="sub-title">Best Offers</small>
+                    <h2 class="h1 title">Featured Tour Packages</h2>
+                    <p class="mb-0">
+                        Browse our selection of curated tour packages designed to give you 
+                        the best travel experience at unbeatable prices.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 text-lg-end mt-3 mt-lg-0">
+                <a href="{{ route('tours.index') }}" class="btn btn-outline-primary btn-uppercase">
+                    <span>View all tours</span>
+                    <i class="hicon hicon-flights-one-ways"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tours Grid -->
+        <div class="row g-4">
+            @forelse($featuredTours as $tour)
+            <div class="col-12 col-xxl-4 col-xl-4 col-lg-6">
+                <!-- Tour Card -->
+                <div class="home-tour-card destination bottom-overlay hover-effect rounded h-100 position-relative">
+                    @if($tour->discount)
+                        <div class="float-badge bg-danger">
+                            <span>{{ $tour->discount->percentage }}% OFF</span>
+                        </div>
+                    @endif
+                    <!-- Wishlist Button -->
+                    <div class="position-absolute top-0 end-0 m-3" style="z-index: 10;">
+                        <x-wishlist-button :tour-id="$tour->id" />
+                    </div>
+                    <a href="{{ route('tours.show', $tour->id) }}" class="tour-card-link d-block h-100">
+                        <figure class="image-hover image-hover-overlay mb-0">
+                            <x-image-carousel 
+                                :images="$tour->images" 
+                                :item-id="$tour->id" 
+                                :fallback-image="$tour->image_path"
+                                :alt-prefix="$tour->title" />
+                            <i class="hicon hicon-plus-thin image-hover-icon"></i>
+                        </figure>
+                        <div class="bottom-overlay-content">
+                            <div class="tour-card-content">
+                                <div class="tour-info">
+                                    <h3 class="destination-title mb-2">{{ $tour->title }}</h3>
+                                    @if($tour->destinations->count() > 0)
+                                        <span class="text-white-50 small d-block mb-1">
+                                            <i class="hicon hicon-location me-1"></i>
+                                            {{ $tour->destinations->first()->name }}
+                                        </span>
+                                    @endif
+                                    @if($tour->start_date && $tour->end_date)
+                                        <span class="text-white-50 small d-block">
+                                            <i class="hicon hicon-calendar me-1"></i>
+                                            {{ $tour->start_date->format('M d') }} - {{ $tour->end_date->format('M d, Y') }}
+                                        </span>
+                                    @endif
+                                    @if($tour->duration)
+                                        <span class="text-white-50 small d-block mt-1">
+                                            <i class="hicon hicon-time-clock me-1"></i>
+                                            {{ $tour->duration }}
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="tour-price text-end">
+                                    @if($tour->is_price_defined && $tour->price)
+                                        @if($tour->discount)
+                                            <small class="text-decoration-line-through text-white-50 d-block">
+                                                {{ format_price($tour->price) }}
+                                            </small>
+                                            <span class="h5 mb-0 text-white fw-bold">
+                                                {{ format_price($tour->price * (1 - $tour->discount->percentage / 100)) }}
+                                            </span>
+                                        @else
+                                            <span class="h5 mb-0 text-white fw-bold">
+                                                {{ format_price($tour->price) }}
+                                            </span>
+                                        @endif
+                                        <small class="text-white-50 d-block">per person</small>
+                                    @else
+                                        <span class="badge bg-white text-dark">Contact Us</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- /Tour Card -->
+            </div>
+            @empty
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <div class="mb-4">
+                        <i class="hicon hicon-backpack text-muted" style="font-size: 80px;"></i>
+                    </div>
+                    <h3 class="h4 mb-3">No Tours Available Yet</h3>
+                    <p class="text-muted mb-4">
+                        Check back soon for exciting travel packages!
+                    </p>
+                </div>
+            </div>
+            @endforelse
+        </div>
+    </div>
+</section>
+<!-- /Featured Tours -->
 
 <!-- Call to Action -->
 <section class="p-top-90 p-bottom-90 bg-primary text-white" data-aos="fade">
