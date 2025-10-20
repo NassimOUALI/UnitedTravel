@@ -59,7 +59,7 @@
                         <h2 class="mb-0 fw-bold">{{ $stats['tours'] }}</h2>
                     </div>
                     <div class="stat-icon bg-success-soft text-success">
-                        <i class="hicon hicon-backpack"></i>
+                        <i class="hicon hicon-menu-calendar"></i>
                     </div>
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
@@ -83,7 +83,7 @@
                         <h2 class="mb-0 fw-bold">{{ $stats['users'] }}</h2>
                     </div>
                     <div class="stat-icon bg-info-soft text-info">
-                        <i class="hicon hicon-mmb-account"></i>
+                        <i class="hicon hicon-user"></i>
                     </div>
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
@@ -135,7 +135,7 @@
             <div class="col-6 col-md-4 col-lg-2">
                 <a href="{{ route('admin.destinations.create') }}" class="quick-action-btn">
                     <div class="quick-action-icon bg-primary-soft text-primary">
-                        <i class="hicon hicon-add"></i>
+                        <i class="hicon hicon-flights-pin"></i>
                     </div>
                     <span class="quick-action-text">Add Destination</span>
                 </a>
@@ -143,7 +143,7 @@
             <div class="col-6 col-md-4 col-lg-2">
                 <a href="{{ route('admin.tours.create') }}" class="quick-action-btn">
                     <div class="quick-action-icon bg-success-soft text-success">
-                        <i class="hicon hicon-add"></i>
+                        <i class="hicon hicon-menu-calendar"></i>
                     </div>
                     <span class="quick-action-text">Add Tour</span>
                 </a>
@@ -151,7 +151,7 @@
             <div class="col-6 col-md-4 col-lg-2">
                 <a href="{{ route('admin.announcements.create') }}" class="quick-action-btn">
                     <div class="quick-action-icon bg-warning-soft text-warning">
-                        <i class="hicon hicon-speaker"></i>
+                        <i class="hicon hicon-plus-thin"></i>
                     </div>
                     <span class="quick-action-text">New Announcement</span>
                 </a>
@@ -167,7 +167,7 @@
             <div class="col-6 col-md-4 col-lg-2">
                 <a href="{{ route('admin.users.create') }}" class="quick-action-btn">
                     <div class="quick-action-icon bg-info-soft text-info">
-                        <i class="hicon hicon-mmb-account"></i>
+                        <i class="hicon hicon-account"></i>
                     </div>
                     <span class="quick-action-text">Add User</span>
                 </a>

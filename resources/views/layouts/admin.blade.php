@@ -367,7 +367,7 @@
                 <!-- User Management -->
                 <div class="admin-nav-section">User Management</div>
                 <a href="{{ route('admin.users.index') }}" class="admin-nav-item {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
-                    <i class="hicon hicon-mmb-account"></i>
+                    <i class="hicon hicon-account"></i>
                     Users
                 </a>
 

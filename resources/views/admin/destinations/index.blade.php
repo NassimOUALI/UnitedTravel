@@ -143,7 +143,7 @@
                                        title="View Public Page"
                                        target="_blank"
                                        data-bs-toggle="tooltip">
-                                        <i class="hicon hicon-eye"></i>
+                                        <i class="hicon hicon-search-icon"></i>
                                     </a>
                                     <a href="{{ route('admin.destinations.edit', $destination) }}" 
                                        class="btn btn-outline-primary"
